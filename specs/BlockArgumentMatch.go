@@ -14,11 +14,11 @@ func (ba BlockArgumentMatch) IsSatisfiedBy(node AST.Node) bool {
 		return false
 	}
 
-	if node.Arguments == nil || len(node.Arguments) == 0 {
+	if node.Arguments == nil || len(*node.Arguments) == 0 {
 		return false
 	}
 
-	if arg, ok := node.Arguments[ba.Key]; ok {
+	if arg, ok := (*node.Arguments)[ba.Key]; ok {
 		return arg == ba.Value
 	}
 

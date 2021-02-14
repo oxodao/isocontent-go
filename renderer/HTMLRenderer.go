@@ -79,18 +79,20 @@ func (h HTMLRenderer) renderNode(node AST.Node) (string, error) {
 	}
 
 	arguments := ""
-	if args, ok := node.Arguments["arguments"]; ok {
-		argsArr, err := args.(map[string]string)
-		if !err {
-			return "", iscgoerrors.BadArgument
-		}
+	if node.Arguments != nil {
+		if args, ok := (*node.Arguments)["arguments"]; ok {
+			argsArr, err := args.(map[string]string)
+			if !err {
+				return "", iscgoerrors.BadArgument
+			}
 
-		var renderedArgs []string
-		for k, v := range argsArr {
-			renderedArgs = append(renderedArgs, fmt.Sprintf(`%v="%v"`, k, v))
-		}
+			var renderedArgs []string
+			for k, v := range argsArr {
+				renderedArgs = append(renderedArgs, fmt.Sprintf(`%v="%v"`, k, v))
+			}
 
-		arguments = " " + strings.Join(renderedArgs, " ")
+			arguments = " " + strings.Join(renderedArgs, " ")
+		}
 	}
 
 	if node.Children == nil {

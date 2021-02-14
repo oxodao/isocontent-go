@@ -45,7 +45,7 @@ func ExampleAST() AST.NodeList {
 						Value:    "Text",
 					},
 				},
-				Arguments: map[string]interface{}{},
+				Arguments: &map[string]interface{}{},
 			},
 
 			{
@@ -61,6 +61,7 @@ func ExampleAST() AST.NodeList {
 								Value:    "Un",
 							},
 						},
+						Arguments: &map[string]interface{}{},
 					},
 					{
 						NodeType:  AST.NodeTypeBlock,
@@ -71,6 +72,7 @@ func ExampleAST() AST.NodeList {
 								Value:    "Deux",
 							},
 						},
+						Arguments: &map[string]interface{}{},
 					},
 					{
 						NodeType:  AST.NodeTypeBlock,
@@ -81,9 +83,10 @@ func ExampleAST() AST.NodeList {
 								Value:    "Trois",
 							},
 						},
+						Arguments: &map[string]interface{}{},
 					},
 				},
-				Arguments: map[string]interface{}{
+				Arguments: &map[string]interface{}{
 					"ordered": false,
 				},
 			},
@@ -101,6 +104,7 @@ func ExampleAST() AST.NodeList {
 								Value:    "Un",
 							},
 						},
+						Arguments: &map[string]interface{}{},
 					},
 					{
 						NodeType:  AST.NodeTypeBlock,
@@ -111,6 +115,7 @@ func ExampleAST() AST.NodeList {
 								Value:    "Deux",
 							},
 						},
+						Arguments: &map[string]interface{}{},
 					},
 					{
 						NodeType:  AST.NodeTypeBlock,
@@ -121,9 +126,10 @@ func ExampleAST() AST.NodeList {
 								Value:    "Trois",
 							},
 						},
+						Arguments: &map[string]interface{}{},
 					},
 				},
-				Arguments: map[string]interface{}{
+				Arguments: &map[string]interface{}{
 					"ordered": true,
 				},
 			},
@@ -137,7 +143,7 @@ func ExampleAST() AST.NodeList {
 						Value: "Google :)",
 					},
 				},
-				Arguments: map[string]interface{}{
+				Arguments: &map[string]interface{}{
 					"arguments": map[string]string{
 						"href": "https://google.fr/",
 					},

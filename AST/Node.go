@@ -11,9 +11,9 @@ type Node struct {
 	NodeType NodeType `json:"type"`
 
 	// BlockNode
-	BlockType string                 `json:"block_type,omitempty"`
-	Children  *[]Node                `json:"children,omitempty"`
-	Arguments map[string]interface{} `json:"arguments,omitempty"`
+	BlockType string                  `json:"block_type,omitempty"`
+	Arguments *map[string]interface{} `json:"arguments,omitempty"`
+	Children  *[]Node                 `json:"children,omitempty"`
 
 	// BlockText
 	Value string `json:"value,omitempty"`
