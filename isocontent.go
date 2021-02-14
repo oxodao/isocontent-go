@@ -87,6 +87,62 @@ func ExampleAST() AST.NodeList {
 					"ordered": false,
 				},
 			},
+
+			{
+				NodeType:  AST.NodeTypeBlock,
+				BlockType: "list",
+				Children: &[]AST.Node{
+					{
+						NodeType:  AST.NodeTypeBlock,
+						BlockType: "list_item",
+						Children: &[]AST.Node{
+							{
+								NodeType: AST.NodeTypeText,
+								Value:    "Un",
+							},
+						},
+					},
+					{
+						NodeType:  AST.NodeTypeBlock,
+						BlockType: "list_item",
+						Children: &[]AST.Node{
+							{
+								NodeType: AST.NodeTypeText,
+								Value:    "Deux",
+							},
+						},
+					},
+					{
+						NodeType:  AST.NodeTypeBlock,
+						BlockType: "list_item",
+						Children: &[]AST.Node{
+							{
+								NodeType: AST.NodeTypeText,
+								Value:    "Trois",
+							},
+						},
+					},
+				},
+				Arguments: map[string]interface{}{
+					"ordered": true,
+				},
+			},
+
+			{
+				NodeType:  AST.NodeTypeBlock,
+				BlockType: "link",
+				Children:  &[]AST.Node{
+					{
+						NodeType: AST.NodeTypeText,
+						Value: "Google :)",
+					},
+				},
+				Arguments: map[string]interface{}{
+					"arguments": map[string]string{
+						"href": "https://google.fr/",
+					},
+				},
+			},
 		},
 	}
 }
