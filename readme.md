@@ -2,9 +2,9 @@
 
 Isocontent is a simple library that lets use normalize the content you store in your database to be easily displayed wherever you want.
 
-Since an example is worth a thousand word...
+Since an example is worth a thousand words...
 
-Let's say you're building a website, this website has a user input for comments with a simple WYSIWYG. How do you handle that ? With Isocontent you can simply get the HTML from the user, normalize it to store in the database, and do the reverse operation to show it back again.
+Let's say you're building a website, this website has a WYSIWYG for comments. How do you handle that ? With Isocontent you can simply get the HTML from the user, normalize it to store in the database, and do the reverse operation to show it back again.
 
 Why the extra hassle ? 
 
@@ -13,7 +13,7 @@ Doing so will enable you to display it on different places:
 - Maybe your website is a React app: this library will generate a JSON representation to send through your API and display it automatically
 - Then you're building a mobile app: this library will handle the translation in React Native components easily stylable
 
-Adding other renderer is quite an easy task, and the added benefit is that Isocontent works in a whitelist-based library: any tags not handled (such as script tags) will not be rendered nor stored in database, this add a layer of security for your inputs.
+Adding other renderer is quite an easy task, and the added benefit is that Isocontent works in a whitelist-based fashion: any tags not handled (such as script tags) will not be rendered nor stored in database, this add an extra layer of security for your inputs.
 
 ## Getting started - Golang
 
@@ -65,6 +65,7 @@ type Renderer interface {
 	SupportsFormat(string) bool
 }
 ```
+You can use the already implemented one as an example to help you: [Parser](https://github.com/oxodao/isocontent-go/blob/master/parser/DOMParser.go) / [Renderer](https://github.com/oxodao/isocontent-go/blob/master/renderer/JsonRenderer.go)
 Then you simply register it 
 ```go
 isocontent := isogo.New()
