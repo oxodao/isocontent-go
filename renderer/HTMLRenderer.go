@@ -9,17 +9,17 @@ import (
 )
 
 type HTMLRenderer struct {
-	tags []tag
+	tags []htmlTag
 }
 
-type tag struct {
+type htmlTag struct {
 	Specification specs.Specification
 	HTMLElement string
 }
 
 func NewHTMLRenderer() HTMLRenderer {
 	return HTMLRenderer{
-		tags: []tag{
+		tags: []htmlTag{
 			{ specs.Type("paragraph"), "p" },
 			{ specs.Type("inline_text"), "span" },
 			{ specs.Type("emphasis"), "em" },
