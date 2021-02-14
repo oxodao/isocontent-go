@@ -5,6 +5,7 @@ type NodeType string
 const (
 	NodeTypeBlock NodeType = "block"
 	NodeTypeText  NodeType = "text"
+	NodeTypeList  NodeType = "list"
 )
 
 type Node struct {
@@ -17,4 +18,20 @@ type Node struct {
 
 	// BlockText
 	Value string `json:"value,omitempty"`
+}
+
+func FromText(text string) *Node {
+	return &Node{
+		NodeType: NodeTypeText,
+		Value:    text,
+	}
+}
+
+func FromBlockType(blockType string, arguments *map[string]interface{}, children *[]Node) *Node {
+	return &Node{
+		NodeType:  NodeTypeBlock,
+		BlockType: blockType,
+		Arguments: arguments,
+		Children:  children,
+	}
 }

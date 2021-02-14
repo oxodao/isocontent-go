@@ -2,6 +2,7 @@ package isocontent_go
 
 import (
 	"github.com/oxodao/isocontent-go/AST"
+	"github.com/oxodao/isocontent-go/builder"
 	"github.com/oxodao/isocontent-go/iscgoerrors"
 	"github.com/oxodao/isocontent-go/parser"
 	"github.com/oxodao/isocontent-go/renderer"
@@ -12,7 +13,7 @@ type Isocontent struct {
 	Renderers []renderer.Renderer
 }
 
-func NewIsocontent() Isocontent {
+func New() Isocontent {
 	return Isocontent{
 		Parsers: []parser.Parser{
 			parser.DOMParser{},
@@ -33,9 +34,16 @@ func (i *Isocontent) RegisterRenderer(renderer renderer.Renderer) {
 }
 
 func (i *Isocontent) Parse(input interface{}, format string) ([]AST.Node, error) {
+	currBuilder := builder.New("", nil)
+
 	for _, p := range i.Parsers {
 		if p.SupportsFormat(format) {
-			return p.Parse(input)
+			err := p.Parse(currBuilder, input)
+			if err != nil {
+				return nil, err
+			}
+
+			return *currBuilder.GetAST().Children, nil
 		}
 	}
 
