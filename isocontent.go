@@ -17,6 +17,7 @@ func New() Isocontent {
 	return Isocontent{
 		Parsers: []parser.Parser{
 			parser.DOMParser{},
+			parser.NewMarkdownParser(),
 		},
 		Renderers: []renderer.Renderer{
 			renderer.NewHTMLRenderer(),
